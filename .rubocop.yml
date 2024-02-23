@@ -1,0 +1,33 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0.3
+  SuggestExtensions: false
+  Exclude:
+   - 'bin/**/*'
+   - 'config/**/*'
+   - 'db/**/*'
+   - 'node_modules/**/*'
+   - 'script/**/*'
+   - 'spec/rails_helper.rb'
+   - 'vendor/**/*'
+
+Layout/LineLength:
+  Max: 80
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context', 'let', 'it', 'define', 'factory']
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: 'compact'

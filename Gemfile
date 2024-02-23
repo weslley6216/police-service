@@ -15,6 +15,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
   gem 'pry-byebug', '~> 3.10', '>= 3.10.1'
   gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
+  gem 'rubocop-rails', '~> 2.23', '>= 2.23.1'
 end
 
 group :development do
