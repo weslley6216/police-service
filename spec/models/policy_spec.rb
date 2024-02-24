@@ -8,6 +8,7 @@ describe Policy, type: :model do
 
   describe 'validations' do
     it { should validate_presence_of(:number) }
+    it { should validate_uniqueness_of(:number) }
     it { should validate_presence_of(:issued_date) }
     it { should validate_presence_of(:end_coverage_date) }
   end

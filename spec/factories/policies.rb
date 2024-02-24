@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :policy do
-    number { '01234567891' }
+    sequence(:number) { |n| "300311001068#{n}" }
     issued_date { Time.zone.today }
     end_coverage_date { 1.year.from_now }
   end
