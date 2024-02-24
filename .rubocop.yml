@@ -20,9 +20,6 @@ Layout/LineLength:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Metrics/BlockLength:
-  IgnoredMethods: ['describe', 'context', 'let', 'it', 'define', 'factory']
-
 Style/Documentation:
   Enabled: false
 

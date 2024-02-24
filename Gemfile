@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.3'
 
+gem 'active_model_serializers', '~> 0.10.14'
 gem 'bootsnap', require: false
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
@@ -19,5 +20,6 @@ group :development, :test do
 end
 
 group :test do
+  gem 'database_cleaner-active_record', '~> 2.1'
   gem 'shoulda-matchers', '~> 6.1'
 end
