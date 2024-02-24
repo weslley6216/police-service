@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_24_004947) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_24_022345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_24_004947) do
     t.date "end_coverage_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["number"], name: "index_policies_on_number", unique: true
   end
 
   create_table "vehicles", force: :cascade do |t|
