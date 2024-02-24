@@ -7,6 +7,6 @@ class V1::PoliciesController < ApplicationController
     render json: Policy.find_by!(number: params[:number]),
            serializer: PolicySerializer, status: :ok
   rescue ActiveRecord::RecordNotFound
-    render json: { message: 'Police not found' }, status: :not_found
+    render json: { message: 'Policy not found' }, status: :not_found
   end
 end

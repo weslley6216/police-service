@@ -9,6 +9,7 @@ describe '#GET /policies/' do
     it 'list all policies' do
       get '/v1/policies'
 
+      expect(response.status).to eq(200)
       expect(response.body).to eq(
         ActiveModel::Serializer::CollectionSerializer.new(
           Policy.all,
@@ -22,6 +23,7 @@ describe '#GET /policies/' do
     it 'returns an empty array' do
       get '/v1/policies'
 
+      expect(response.status).to eq(200)
       expect(response.body).to eq('[]')
     end
   end
@@ -35,6 +37,7 @@ describe '#GET /v1/policies/:number' do
       get "/v1/policies/#{policy.number}"
       json_response = JSON(response.body)
 
+      expect(response.status).to eq(200)
       expect(json_response['number']).to eq(policy.number)
       expect(json_response['issued_date']).to eq(
         policy.issued_date.strftime('%Y-%m-%d')
@@ -46,11 +49,12 @@ describe '#GET /v1/policies/:number' do
   end
 
   context 'when there is not policy' do
-    it 'returns an empty array' do
+    it 'returns policy not found message' do
       get '/v1/policies/999'
       json_response = JSON(response.body)
 
-      expect(json_response).to include({ 'message' => 'Police not found' })
+      expect(response.status).to eq(404)
+      expect(json_response).to eq({ 'message' => 'Policy not found' })
     end
   end
 end
