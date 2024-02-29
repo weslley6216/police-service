@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 services:
   db:
     image: postgres
@@ -19,13 +19,32 @@ services:
       - '3000:3000'
     volumes:
       - .:/opt/app
+      - rubygems:/usr/local/bundle
     env_file:
       - .env
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -f 0.0.0.0:3000/up || exit 1']
+      interval: 2s
+      timeout: 2s
+      retries: 3
     depends_on:
       - db
     networks:
       - policy-service-app
     command: bash -c 'bin/setup && rails server -b 0.0.0.0 -p 3000'
+  sneakers:
+    build:
+      context: .
+    env_file:
+      - .env
+    command: bash -c 'bundle exec rake workers:start'
+    depends_on:
+      policy-service:
+        condition: service_healthy
+    networks:
+      - policy-service-app
 networks:
   policy-service-app:
     name: policy-service-app
+volumes:
+  rubygems:
