@@ -1,7 +1,9 @@
 class InsuredPerson < ApplicationRecord
   belongs_to :policy
 
+  VALID_CPF = /\d{3}\.\d{3}\.\d{3}-\d{2}/
+
   validates :name, :cpf, presence: true
-  validates :cpf, numericality: { greater_than_or_equal_to: 0 }
-  validates :cpf, length: { is: 11 }
+  validates :cpf, uniqueness: true
+  validates :cpf, format: { with: VALID_CPF }
 end
