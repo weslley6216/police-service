@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_24_022345) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_01_144745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_24_022345) do
     t.bigint "policy_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cpf"], name: "index_insured_people_on_cpf", unique: true
     t.index ["policy_id"], name: "index_insured_people_on_policy_id"
   end
 
@@ -40,6 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_24_022345) do
     t.bigint "policy_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["plate"], name: "index_vehicles_on_plate", unique: true
     t.index ["policy_id"], name: "index_vehicles_on_policy_id"
   end
 
