@@ -23,6 +23,9 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context', 'let', 'it', 'define', 'factory']
+
 Style/GuardClause:
   Enabled: false
 
