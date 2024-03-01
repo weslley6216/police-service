@@ -35,14 +35,14 @@ describe '#GET /v1/policies/:number' do
 
     it 'returns the policy' do
       get "/v1/policies/#{policy.number}"
-      json_response = JSON(response.body)
+      json_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.status).to eq(200)
-      expect(json_response['number']).to eq(policy.number)
-      expect(json_response['issued_date']).to eq(
+      expect(json_response[:number]).to eq(policy.number)
+      expect(json_response[:issued_date]).to eq(
         policy.issued_date.strftime('%Y-%m-%d')
       )
-      expect(json_response['end_coverage_date']).to eq(
+      expect(json_response[:end_coverage_date]).to eq(
         policy.end_coverage_date.strftime('%Y-%m-%d')
       )
     end

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :insured_person do
     policy
-    name { 'Jon Doe' }
-    cpf { '01234567891' }
+    name { 'John Doe' }
+    sequence(:cpf) { |n| "357.782.144-0#{n}" }
   end
 end

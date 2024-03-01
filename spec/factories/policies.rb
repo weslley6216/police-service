@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :policy do
-    sequence(:number) { |n| "300311001068#{n}" }
+    number { SecureRandom.random_number((10**13) - 1).to_s.rjust(13, '0') }
     issued_date { Time.zone.today }
-    end_coverage_date { 1.year.from_now }
+    end_coverage_date { 1.year.from_now.to_date }
   end
 
   trait :with_data do
